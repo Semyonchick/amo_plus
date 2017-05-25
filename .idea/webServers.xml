@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="da9785e8-1299-458c-83e7-ae61ecf224d5" name="beget" url="http://semyon93.beget.tech">
+        <fileTransfer host="semyon93.beget.tech" port="21" rootFolder="/smartsam.ru/public_html">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

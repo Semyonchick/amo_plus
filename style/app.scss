@@ -1,0 +1,66 @@
+.amo-plus, div[data-code^="amo_plus"] {
+  background: #58a691;
+}
+
+.ap__widgetBlock {
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+  cursor: default;
+  background: white;
+  border-radius: 3px;
+  h3 {
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+  .ap__widgetTitle {
+    cursor: pointer;
+    margin: 0;
+  }
+  .ap__toggleButton {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    text-align: center;
+    &.open:before {
+      content: '-';
+    }
+    &:before {
+      content: '+';
+      border: 1px solid #58a691;
+      display: inline-block;
+      width: 16px;
+      line-height: 16px;
+
+      color: #58a691;
+      border-radius: 50%;
+      font-size: 18px;
+      padding-top: 1px;
+    }
+  }
+  .ap__funnelSelect {
+    margin: 5px 0 0;
+  }
+  .ap__saveButton {
+    margin-top: 10px;
+  }
+}
+
+.ap__laborCost {
+  table {
+    margin-top: 5px;
+    width: 100%;
+    line-height: 1.4;
+    th {
+      width: 70%;
+      text-align: left;
+      padding: 0 10px 0 0;
+    }
+    td {
+      width: 30%;
+    }
+
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "widget": {
+    "name": "widget.name",
+    "description": "widget.description",
+    "short_description": "widget.short_description",
+    "code": "amo_plus_2",
+    "secret_key": "4edd25900f93c66d391021fae3dca75898c0e194b98e9134808c830268178a0b",
+    "version": "1.0.3",
+    "interface_version": 2,
+    "init_once": false,
+    "locale": [
+      "ru"
+    ],
+    "installation": true
+  },
+  "locations": [
+    "lcard-1",
+    "settings"
+  ],
+  "settings": {
+    "url": {
+      "name": "settings.url",
+      "type": "text",
+      "required": false
+    }
+  }
+}

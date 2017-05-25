@@ -1,0 +1,10 @@
+{
+  "widget": {
+    "name": "Amo+",
+    "short_description": "Набор виджетов для АМО",
+    "description": "Набор виджетов для АМО"
+  },
+  "settings": {
+    "url": "Путь для скриптов"
+  }
+}

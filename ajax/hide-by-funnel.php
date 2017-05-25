@@ -7,7 +7,7 @@
  */
 
 $file = __DIR__ . '/../data/' . $_GET['domain'] . '/'.basename(__FILE__, '.php').'.json';
-if($_POST['data']){
+if($_POST['data'] && $_POST['save']){
     if (!file_exists(dirname($file))) mkdir(dirname($file), 0777, true);
     file_put_contents($file, $_POST['data']);
 }

@@ -20,9 +20,9 @@ try {
 
     $fields = [];
     $helper = [
-        'leads' => ['ld', 'Сделки'],
-        'contacts' => ['cn', 'Контакты'],
-        'companies' => ['cm', 'Компании'],
+        'leads' => ['ld', 'Сделка'],
+        'contacts' => ['cn', 'Контакт'],
+        'companies' => ['cm', 'Компания'],
     ];
     foreach ($helper as $name => $data) {
         foreach ($info['custom_fields'][$name] as $value) {
@@ -34,6 +34,7 @@ try {
     }
 
     $formats = [
+        '' => 'Без форматирпования',
         'fio_to_dative' => 'ФИО в именительном',
         'fio_to_genitive' => 'ФИО в родительном',
         'fio_to_initial' => 'ФИО с инициалами',

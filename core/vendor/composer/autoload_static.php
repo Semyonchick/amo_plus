@@ -20,6 +20,17 @@ class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
         array (
             'cebe\\markdown\\' => 14,
         ),
+        'Z' => 
+        array (
+            'Zend\\Validator\\' => 15,
+            'Zend\\Stdlib\\' => 12,
+            'Zend\\Escaper\\' => 13,
+        ),
+        'P' => 
+        array (
+            'PhpOffice\\PhpWord\\' => 18,
+            'PhpOffice\\Common\\' => 17,
+        ),
         'A' => 
         array (
             'AmoCRM\\' => 7,
@@ -39,6 +50,26 @@ class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
         ),
+        'Zend\\Validator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-validator/src',
+        ),
+        'Zend\\Stdlib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-stdlib/src',
+        ),
+        'Zend\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-escaper/src',
+        ),
+        'PhpOffice\\PhpWord\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
+        ),
+        'PhpOffice\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/common/src/Common',
+        ),
         'AmoCRM\\' => 
         array (
             0 => __DIR__ . '/..' . '/dotzero/amocrm/src',
@@ -55,12 +86,17 @@ class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
         ),
     );
 
+    public static $classMap = array (
+        'PclZip' => __DIR__ . '/..' . '/pclzip/pclzip/pclzip.lib.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -6,5 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'yii\\composer\\' => array($vendorDir . '/yiisoft/yii2-composer'),
+    'yii\\' => array($vendorDir . '/yiisoft/yii2'),
+    'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'AmoCRM\\' => array($vendorDir . '/dotzero/amocrm/src'),
 );

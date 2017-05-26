@@ -23,6 +23,7 @@ define(['jquery'], function ($) {
                 self.get_settings().url + '/lib/auto-budget.js',
                 self.get_settings().url + '/lib/auto-name.js',
                 self.get_settings().url + '/lib/labor-cost.js',
+                self.get_settings().url + '/lib/fields-template.js',
                 self.get_settings().url + '/lib/hide-by-funnel.js'
             ], function () {
                 for (var i = 0; i < arguments.length; i++) arguments[i](self);
@@ -40,8 +41,10 @@ define(['jquery'], function ($) {
                     $('.ap__toggleButton, .ap__widgetTitle', $widget).click(function () {
                         $content.toggle();
                         $button.toggleClass('open');
-                        localStorage.setItem($widget.data('name'), $button.hasClass('open') ? 1 : 0)
+                        localStorage.setItem($widget.data('name'), $button.hasClass('open') ? 1 : 0);
+                        if($button.hasClass('open')) $content.trigger('amo:contentOpen');
                     });
+                    if($button.hasClass('open')) $content.trigger('amo:contentOpen');
                 });
             });
         },

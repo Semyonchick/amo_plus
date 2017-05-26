@@ -28,8 +28,7 @@ if (isset($_GET['report'])) {
     $time = strtotime("{$month}/01/{$year}");
 
     try {
-        // Создание клиента
-        $amo = new \AmoCRM\Client($_GET['domain'], 'sash.l@mail.ru', 'fceaaec07bf17722f6689bc74abe32d2');
+        $amo = getAmo();
 
         $note = $amo->note;
 
@@ -67,34 +66,8 @@ if (isset($_GET['report'])) {
             }
         }
         $names = array_unique($names);
-        ?>
-        <table border="1" cellpadding="5">
-            <thead>
-            <tr>
-                <th>№ Сделки</th>
-                <td>Расходы</td>
-                <? foreach ($names as $name) echo '<td>' . $name . '</td>' ?>
-            </tr>
-            </thead>
-            <? foreach ($data as $key => $row): ?>
-                <tr>
-                    <th><?= $key ?></th>
-                    <td><?= array_sum(array_map(function($row){
-                            return $row['price'];
-                        }, $row)) ?></td>
-                    <? foreach ($names as $name) echo '<td>' . current(array_filter($row, function($row) use ($name){
-                                return $row['name'] == $name;
-                            }))['price'] . '</td>' ?>
-                </tr>
-            <? endforeach; ?>
-        </table>
 
-        <pre><? print_r($empty)?></pre>
-
-
-        <?
-
-//        echo json_encode([compact('empty')]);
+        require __DIR__ . '/../views/labor-cost-report.php';
     } catch (\AmoCRM\Exception $e) {
         printf('Error (%d): %s' . PHP_EOL, $e->getCode(), $e->getMessage());
     }

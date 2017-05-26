@@ -6,7 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
 {
+    public static $files = array (
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'y' => 
+        array (
+            'yii\\composer\\' => 13,
+            'yii\\' => 4,
+        ),
+        'c' => 
+        array (
+            'cebe\\markdown\\' => 14,
+        ),
         'A' => 
         array (
             'AmoCRM\\' => 7,
@@ -14,9 +27,31 @@ class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
     );
 
     public static $prefixDirsPsr4 = array (
+        'yii\\composer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-composer',
+        ),
+        'yii\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'cebe\\markdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
         'AmoCRM\\' => 
         array (
             0 => __DIR__ . '/..' . '/dotzero/amocrm/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
         ),
     );
 
@@ -25,6 +60,7 @@ class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7ae76ac10c38116223f4a950b155861f::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

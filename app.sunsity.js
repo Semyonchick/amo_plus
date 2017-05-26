@@ -38,8 +38,10 @@ define(['jquery'], function ($) {
                     $('.ap__toggleButton, .ap__widgetTitle', $widget).click(function () {
                         $content.toggle();
                         $button.toggleClass('open');
-                        localStorage.setItem($widget.data('name'), $button.hasClass('open') ? 1 : 0)
+                        localStorage.setItem($widget.data('name'), $button.hasClass('open') ? 1 : 0);
+                        if($button.hasClass('open')) $content.toggle('amo:contentOpen');
                     });
+                    if($button.hasClass('open')) $content.toggle('amo:contentOpen');
                 });
             });
         },

@@ -5,10 +5,14 @@
  * Date: 25.05.2017
  * Time: 22:20
  */
-header('Content-Type: text/html; charset=utf-8');
-if (!$_GET['domain']) throw new HttpException('Can`t find domain');
 
-$file = __DIR__ . '/../data/' . $_GET['domain'] . '/' . basename($_SERVER['SCRIPT_FILENAME'], '.php') . '.json';
+require_once __DIR__ . '/vendor/autoload.php';
+
+header('Content-Type: text/html; charset=utf-8');
+
+if (!($domain = $_GET['domain'] ?: $_POST['domain'])) throw new HttpException('Can`t find domain');
+
+$file = __DIR__ . '/../data/' . $domain . '/' . basename($_SERVER['SCRIPT_FILENAME'], '.php') . '.json';
 
 function getData()
 {
@@ -23,4 +27,9 @@ function setData($data)
     return file_put_contents($file, is_array($data) ? serialize($data) : $data);
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
+// Создание клиента AMOCRM
+function getAmo()
+{
+    global $domain;
+    return new \AmoCRM\Client($domain, $_POST['login']?:'sash.l@mail.ru', $_POST['api_key']?:'fceaaec07bf17722f6689bc74abe32d2');
+}

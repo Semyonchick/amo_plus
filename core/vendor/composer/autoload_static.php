@@ -88,6 +88,8 @@ class ComposerStaticInit7ae76ac10c38116223f4a950b155861f
 
     public static $classMap = array (
         'PclZip' => __DIR__ . '/..' . '/pclzip/pclzip/pclzip.lib.php',
+        'XLSXWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
+        'XLSXWriter_BuffererWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

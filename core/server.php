@@ -33,3 +33,11 @@ function getAmo()
     global $domain;
     return new \AmoCRM\Client($domain, $_POST['login']?:'sash.l@mail.ru', $_POST['api_key']?:'fceaaec07bf17722f6689bc74abe32d2');
 }
+
+function p($data, $return = false)
+{
+    if (!$data) var_dump($data);
+    else
+        if ($return) return '<pre>' . print_r($data, 1) . '</pre>';
+        else echo '<pre>' . print_r($data, 1) . '</pre>';
+}

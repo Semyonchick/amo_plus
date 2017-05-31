@@ -19,8 +19,9 @@ if ($_POST['id'] && $_POST['data']) {
 }
 
 if (isset($_GET['report'])) {
-    $month = intval($_POST['month']) ?: date('m');
-    $year = intval($_POST['year']) ?: date('Y');
+    if($_POST['date']) list($_POST['year'], $_POST['month']) = explode('-', $_POST['date']);
+    $_POST['month'] = $month = intval($_POST['month']) ?: date('m');
+    $_POST['year'] = $year = intval($_POST['year']) ?: date('Y');
     if ($month == 0) {
         $year -= 1;
         $month = 12;
@@ -45,11 +46,13 @@ if (isset($_GET['report'])) {
             $params['limit_offset'] = count($list);
         }
 
-        $idList = [];
+        $closeDates = $idList = [];
         foreach ($list as $row) if ($row['note_type'] == 3 && $month == date('m', $row['date_create'])) {
             $data = json_decode($row['text'], true);
-            if (isset($data['STATUS_NEW']) && $data['STATUS_NEW'] == 142)
+            if (isset($data['STATUS_NEW']) && $data['STATUS_NEW'] == 142){
                 $idList[$row['element_id']] = $row['element_id'];
+                $closesDate[$row['element_id']] = $row['date_create'];
+            }
         }
 
         $db = unserialize(getData());
@@ -66,6 +69,8 @@ if (isset($_GET['report'])) {
             }
         }
         $names = array_unique($names);
+
+        $leads = $amo->lead->apiList(['id' => array_keys($data)]);
 
         require __DIR__ . '/../views/labor-cost-report.php';
     } catch (\AmoCRM\Exception $e) {

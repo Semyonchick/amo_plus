@@ -95,7 +95,7 @@ else:
                value="<?= $_POST['year'] ?>-<?= substr('0' . $_POST['month'], -2, 2) ?>" onchange="this.form.submit()">
     </form>
 
-    <div style="overflow-x: auto;margin: 0 -2px">
+    <div class="table-scroll" style="margin: 0 -2px">
         <table>
             <thead>
             <tr>

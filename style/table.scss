@@ -1,4 +1,11 @@
 @import "../core/vendor/zurb/foundation/scss/foundation";
-@include foundation-table;
-@include table-scroll;
+$global-font-size: rem-calc(12);
 @include table-hover;
+@include foundation-table;
+
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  table{
+    font-size: 14px;
+  }
+}

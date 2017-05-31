@@ -3,6 +3,7 @@
         "dotzero/amocrm": "^0.3.15",
         "yiisoft/yii2": "2.0.11.2",
         "phpoffice/phpword": "^0.13.0",
-        "mk-j/php_xlsxwriter": "^0.32.0"
+        "mk-j/php_xlsxwriter": "^0.32.0",
+        "zurb/foundation": "^6.3"
     }
 }

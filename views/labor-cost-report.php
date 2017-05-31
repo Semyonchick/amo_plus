@@ -69,18 +69,22 @@ foreach (array_values($headers) as $key => $row) {
 if ($_GET['report'] == 'xlsx'):
     $writer = new XLSXWriter();
 
-    $writer->writeSheetHeader('Sheet1', $headers, ['border' => 'left,right,top,bottom']);
+    $writer->writeSheetHeader('Sheet1', $headers);
     foreach ($tableData as $row)
         $writer->writeSheetRow('Sheet1', $row, ['border' => 'left,right,top,bottom']);
     $writer->writeSheetRow('Sheet1', $footer, ['color' => '#f00']);
 
-    header('Content-disposition: attachment; filename=myfile.xlsx');
+    header('Content-disposition: attachment; filename=report' . $month . $year . '.xlsx');
     header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     $writer->writeToStdOut();
 
 else:
 ?>
-
+    <html>
+    <head>
+        <link href="../style/table.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
 
     <div style="float: right">
         <a href="?<?= http_build_query(['report' => 'xlsx'] + $_GET) ?>">скачать .xlsx</a>
@@ -91,27 +95,31 @@ else:
                value="<?= $_POST['year'] ?>-<?= substr('0' . $_POST['month'], -2, 2) ?>" onchange="this.form.submit()">
     </form>
 
-    <table border="1" cellpadding="5">
-        <thead>
-        <tr>
-            <? foreach (array_keys($headers) as $row): ?>
-                <th><?= $row ?></th>
-            <? endforeach; ?>
-        </tr>
-        </thead>
-        <tbody>
-        <? foreach ($tableData as $row): ?>
+    <div style="overflow-x: auto;margin: 0 -2px">
+        <table>
+            <thead>
             <tr>
-                <? foreach ($row as $value) echo '<td>' . $value . '</td>' ?>
+                <? foreach (array_keys($headers) as $row): ?>
+                    <th><?= $row ?></th>
+                <? endforeach; ?>
             </tr>
-        <? endforeach; ?>
-        </tbody>
-        <tfoot>
-        <tr>
-            <? foreach ($footer as $row): ?>
-                <th><?= $row ?></th>
+            </thead>
+            <tbody>
+            <? foreach ($tableData as $row): ?>
+                <tr>
+                    <? foreach ($row as $value) echo '<td>' . $value . '</td>' ?>
+                </tr>
             <? endforeach; ?>
-        </tr>
-        </tfoot>
-</table>
+            </tbody>
+            <tfoot>
+            <tr>
+                <? foreach ($footer as $row): ?>
+                    <th><?= $row ?></th>
+                <? endforeach; ?>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    </body>
+    </html>
 <? endif ?>

@@ -24,7 +24,8 @@ define(['jquery'], function ($) {
                 self.get_settings().url + '/lib/auto-name.js',
                 self.get_settings().url + '/lib/labor-cost.js',
                 self.get_settings().url + '/lib/fields-template.js',
-                self.get_settings().url + '/lib/hide-by-funnel.js'
+                self.get_settings().url + '/lib/hide-by-funnel.js',
+                self.get_settings().url + '/lib/documents.js'
             ], function () {
                 for (var i = 0; i < arguments.length; i++) arguments[i](self);
 

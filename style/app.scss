@@ -80,3 +80,12 @@
 
   }
 }
+
+.ap__widgetContent{
+  a {
+    color: #58a691;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}

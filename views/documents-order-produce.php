@@ -21,7 +21,7 @@ try {
     // Создание клиента
     $amo = getAmo();
     $lead = $amo->lead->apiList(['id' => $_GET['id']])[0];
-    $company = $amo->company->apiList(['id' => $lead['company_uid']])[0];
+    $company = $amo->company->apiList(['id' => $lead['linked_company_id']])[0];
     $links = $amo->links->apiList(['from' => 'leads', 'from_id' => $lead['id'], 'to']);
     $itemQuantities = [];
     foreach ($links as $row)

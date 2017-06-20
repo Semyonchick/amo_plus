@@ -121,8 +121,8 @@ try {
         <th width="70">Фактическая дата сдачи</th>
         <th width="70">Подпись приемщика</th>
     </tr>
+    <? $i = 1; ?>
     <? foreach ($items as $row) if ($row['catalog_id'] == 5703): ?>
-        <? $i = 1; ?>
         <tr>
             <td><?= $i++ ?></td>
             <td><?= $row['name'] ?></td>
@@ -130,7 +130,7 @@ try {
             <td><?= getFieldValue(496155, $row['custom_fields']) ?></td>
             <td><?= getFieldValue('SKU', $row['custom_fields']) ?></td>
             <td><?= $itemQuantities[$row['id']] ?></td>
-            <td><?= getFieldValue(151472, $lead['custom_fields']) ?></td>
+            <td></td>
             <td></td>
             <td></td>
         </tr>
@@ -151,8 +151,8 @@ try {
         <th width="70">Подпись кладовщика</th>
         <th width="70">Подпись подотчетного лица</th>
     </tr>
+    <? $i = 1; ?>
     <? foreach ($items as $row) if ($row['catalog_id'] == 5715): ?>
-        <? $i = 1; ?>
         <tr>
             <td><?= $i++ ?></td>
             <td><?= $row['name'] ?></td>

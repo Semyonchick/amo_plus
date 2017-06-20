@@ -19,9 +19,9 @@ if ($_POST['id'] && $_POST['data']) {
 }
 
 if (isset($_GET['report'])) {
-    if($_POST['date']) list($_POST['year'], $_POST['month']) = explode('-', $_POST['date']);
-    $_POST['month'] = $month = intval($_POST['month']) ?: date('m');
-    $_POST['year'] = $year = intval($_POST['year']) ?: date('Y');
+    if($_GET['date']) list($_GET['year'], $_GET['month']) = explode('-', $_GET['date']);
+    $_GET['month'] = $month = intval($_GET['month']) ?: date('m');
+    $_GET['year'] = $year = intval($_GET['year']) ?: date('Y');
     if ($month == 0) {
         $year -= 1;
         $month = 12;

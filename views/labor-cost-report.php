@@ -14,9 +14,11 @@
 
 function userPrice($name, $row)
 {
-    return current(array_filter($row, function ($row) use ($name) {
+    return array_sum(array_map(function ($row) {
+        return $row['price'];
+    }, array_filter($row, function ($row) use ($name) {
         return $row['name'] == $name;
-    }))['price'];
+    }))) ?: '';
 }
 
 function field($id, $fields)
@@ -28,8 +30,8 @@ function field($id, $fields)
 
 $headers = array(
         '№ Заказа' => 'string',
-        'Планируемый срок сдачи' => 'DD.MM.YYYY',
-        'Фактический срок сдачи' => 'DD.MM.YYYY',
+        'Планируемый срок сдачи' => 'string',
+        'Фактический срок сдачи' => 'string',
         'Планируемый ФОТ' => 'price',
         'Фактический ФОТ' => 'price',
         'ФИО Бригадира' => 'string',
@@ -86,17 +88,28 @@ else:
     </head>
     <body>
 
-    <div style="float: right">
-        <a href="?<?= http_build_query(['report' => 'xlsx'] + $_GET) ?>">скачать .xlsx</a>
-    </div>
-
-    <form method="post">
-        <input placeholder="YYYY-MM" type="month" name="date"
-               value="<?= $_POST['year'] ?>-<?= substr('0' . $_POST['month'], -2, 2) ?>" onchange="this.form.submit()">
-    </form>
+    <? if ($_GET['report'] == 'print'):?>
+        <script>window.onload = function () {
+                window.print();
+                window.close()
+            }</script>
+    <? else: ?>
+        <div style="float: right">
+<!--            <a href="?--><?//= http_build_query(['report' => 'print'] + $_GET) ?><!--" target="_blank">распечатать</a>-->
+            <a href="?<?= http_build_query(['report' => 'xlsx'] + $_GET) ?>">скачать .xlsx</a>
+        </div>
+        <form>
+            <? foreach ($_GET as $key => $value): ?>
+                <input type="hidden" name="<?= $key ?>" value="<?= $value ?>">
+            <? endforeach; ?>
+            <input placeholder="YYYY-MM" type="month" name="date"
+                   value="<?= $_GET['year'] ?>-<?= substr('0' . $_GET['month'], -2, 2) ?>"
+                   onchange="this.form.submit()">
+        </form>
+    <? endif; ?>
 
     <div class="table-scroll" style="margin: 0 -2px">
-        <table>
+        <table width="100%">
             <thead>
             <tr>
                 <? foreach (array_keys($headers) as $row): ?>

@@ -49,7 +49,7 @@ if (isset($_GET['report'])) {
         $closeDates = $idList = [];
         foreach ($list as $row) if ($row['note_type'] == 3 && $month == date('m', $row['date_create'])) {
             $data = json_decode($row['text'], true);
-            if (isset($data['STATUS_NEW']) && $data['STATUS_NEW'] == 142){
+            if (empty($idList[$row['element_id']]) && isset($data['STATUS_NEW']) && in_array($data['STATUS_NEW'], [142, 13945743, 14626600])){
                 $idList[$row['element_id']] = $row['element_id'];
                 $closesDate[$row['element_id']] = $row['date_create'];
             }

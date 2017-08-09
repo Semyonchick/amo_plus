@@ -46,10 +46,10 @@ foreach ($data as $key => $row):
     $lead = current(array_filter($leads, function ($row) use ($key) {
         return $row['id'] == $key;
     }));
-    $tableData[] = array_merge_recursive([
+    $tableData[$key] = array_merge_recursive([
         $lead['name'],
         date('d.m.Y', strtotime(field(151472, $lead['custom_fields']))),
-        date('d.m.Y', $lead['date_close']),
+        date('d.m.Y', strtotime(field(549915, $lead['custom_fields']))?:$closesDate[$key]),
         field(441495, $lead['custom_fields']),
         array_sum(array_map(function ($row) {
             return $row['price'];
@@ -118,9 +118,9 @@ else:
             </tr>
             </thead>
             <tbody>
-            <? foreach ($tableData as $row): ?>
+            <? foreach ($tableData as $key => $row): ?>
                 <tr>
-                    <? foreach ($row as $value) echo '<td>' . $value . '</td>' ?>
+                    <? foreach ($row as $i=> $value) echo '<td>' . ($i ? $value : '<a href="https://msk2017.amocrm.ru/leads/detail/'.$key.'" target="_blank">' .$value . '</a>' ) . '</td>' ?>
                 </tr>
             <? endforeach; ?>
             </tbody>

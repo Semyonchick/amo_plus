@@ -22,7 +22,7 @@ define(['jquery'], function ($) {
             require([
                 self.get_settings().url + '/lib/auto-budget.js',
                 self.get_settings().url + '/lib/auto-name.js',
-                self.get_settings().url + '/lib/labor-cost.js',
+                self.get_settings().url + '/lib/labor-cost.js?1',
                 self.get_settings().url + '/lib/fields-template.js',
                 self.get_settings().url + '/lib/hide-by-funnel.js',
                 self.get_settings().url + '/lib/documents.js'

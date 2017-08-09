@@ -16,7 +16,7 @@ define(['jquery'], function ($) {
         },
         init: function (self) {
             //Константы для виджетов
-            self.set_settings({budget: {pay: 1949609, total: 1954003}});
+            self.set_settings({budget: {pay: 1958597, total: 1958595}});
 
             //Подключаем все виджеты
             require([

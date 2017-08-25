@@ -126,9 +126,9 @@ try {
         <tr>
             <td><?= $i++ ?></td>
             <td><?= $row['name'] ?></td>
-            <td><?= getFieldValue(898793, $row['custom_fields']) ?></td>
-            <td><?= getFieldValue(496155, $row['custom_fields']) ?></td>
-            <td><?= getFieldValue('SKU', $row['custom_fields']) ?></td>
+            <td><?= getFieldValue(492257, $row['custom_fields']) ?></td>
+            <td><?= getFieldValue(539153, $row['custom_fields']) ?></td>
+            <td><?= getFieldValue('SKU', $row['custom_fields']) ?: getFieldValue(539155, $row['custom_fields']) ?></td>
             <td><?= $itemQuantities[$row['id']] ?></td>
             <td></td>
             <td></td>
@@ -147,7 +147,7 @@ try {
         <th width="42">Размер</th>
         <th width="42">Ед. Изм.</th>
         <th width="42">Кол-во</th>
-        <th width="70">Дата получения</th>
+        <th width="70">Фактический расход</th>
         <th width="70">Подпись кладовщика</th>
         <th width="70">Подпись подотчетного лица</th>
     </tr>
@@ -166,6 +166,11 @@ try {
         </tr>
     <? endif ?>
 </table>
+
+<? if (getFieldValue(151390, $lead['custom_fields'])): ?>
+    <h4>Комментарии:</h4>
+    <p><?= nl2br(getFieldValue(151390, $lead['custom_fields'])) ?></p>
+<? endif ?>
 
 <table cellspacing="0" style="margin-top: 20px">
     <tr>

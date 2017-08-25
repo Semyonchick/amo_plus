@@ -46,19 +46,20 @@ foreach ($data as $key => $row):
     $lead = current(array_filter($leads, function ($row) use ($key) {
         return $row['id'] == $key;
     }));
-    $tableData[$key] = array_merge_recursive([
-        $lead['name'],
-        date('d.m.Y', strtotime(field(151472, $lead['custom_fields']))),
-        date('d.m.Y', strtotime(field(549915, $lead['custom_fields']))?:$closesDate[$key]),
-        field(441495, $lead['custom_fields']),
-        array_sum(array_map(function ($row) {
-            return $row['price'];
-        }, $row)),
-        $main['name'],
-        $main['price'],
-    ], array_map(function ($name) use ($row) {
-        return userPrice($name, $row);
-    }, $names));
+    if (!field(549915, $lead['custom_fields']) || strtotime(field(549915, $lead['custom_fields'])) >= $time && strtotime(field(549915, $lead['custom_fields'])) <= ($time + 86400 * cal_days_in_month(CAL_GREGORIAN, $month, $year)))
+        $tableData[$key] = array_merge_recursive([
+            $lead['name'],
+            date('d.m.Y', strtotime(field(151472, $lead['custom_fields']))),
+            date('d.m.Y', strtotime(field(549915, $lead['custom_fields']))?:$closesDate[$key]),
+            field(441495, $lead['custom_fields']),
+            array_sum(array_map(function ($row) {
+                return $row['price'];
+            }, $row)),
+            $main['name'],
+            $main['price'],
+        ], array_map(function ($name) use ($row) {
+            return userPrice($name, $row);
+        }, $names));
 endforeach;
 
 $footer = [];

@@ -167,9 +167,9 @@ try {
     <? endif ?>
 </table>
 
-<? if (getFieldValue(151390, $lead['custom_fields'])): ?>
+<? if (getFieldValue(551845, $lead['custom_fields'])): ?>
     <h4>Комментарии:</h4>
-    <p><?= nl2br(getFieldValue(151390, $lead['custom_fields'])) ?></p>
+    <p><?= nl2br(getFieldValue(551845, $lead['custom_fields'])) ?></p>
 <? endif ?>
 
 <table cellspacing="0" style="margin-top: 20px">

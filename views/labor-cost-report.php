@@ -46,7 +46,7 @@ foreach ($data as $key => $row):
     $lead = current(array_filter($leads, function ($row) use ($key) {
         return $row['id'] == $key;
     }));
-    if (!field(549915, $lead['custom_fields']) || strtotime(field(549915, $lead['custom_fields'])) >= $time && strtotime(field(549915, $lead['custom_fields'])) <= ($time + 86400 * cal_days_in_month(CAL_GREGORIAN, $month, $year)))
+    if (!field(549915, $lead['custom_fields']) && $closesDate[$key] >= $time || strtotime(field(549915, $lead['custom_fields'])) >= $time && strtotime(field(549915, $lead['custom_fields'])) <= ($time + 86400 * cal_days_in_month(CAL_GREGORIAN, $month, $year)))
         $tableData[$key] = array_merge_recursive([
             $lead['name'],
             date('d.m.Y', strtotime(field(151472, $lead['custom_fields']))),

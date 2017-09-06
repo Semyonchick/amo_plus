@@ -42,7 +42,7 @@ if (isset($_GET['report'])) {
         while (($result = $note->apiList($params)) &&
             ($list = array_merge_recursive($list, $result)) &&
             count($result) == 500 &&
-            end($result)['date_create'] < ($time + 86400 * cal_days_in_month(CAL_GREGORIAN, $month, $year))) {
+            end($result)['date_create'] < ($time + 86400 * (cal_days_in_month(CAL_GREGORIAN, $month, $year) + 10))) {
             $params['limit_offset'] = count($list);
         }
 

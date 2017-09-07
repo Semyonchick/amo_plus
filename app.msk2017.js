@@ -20,7 +20,7 @@ define(['jquery'], function ($) {
 
             //Подключаем все виджеты
             require([
-                self.get_settings().url + '/lib/float-quantity.js?2',
+                self.get_settings().url + '/lib/float-quantity.js?3',
                 self.get_settings().url + '/lib/auto-budget.js?2',
                 self.get_settings().url + '/lib/auto-name.js',
                 self.get_settings().url + '/lib/labor-cost.js?1',

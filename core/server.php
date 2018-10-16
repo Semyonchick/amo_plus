@@ -31,7 +31,7 @@ function setData($data)
 function getAmo()
 {
     global $domain;
-    return new \AmoCRM\Client($domain, $_POST['login']?:'sash.l@mail.ru', $_POST['api_key']?:'fceaaec07bf17722f6689bc74abe32d2');
+    return new \AmoCRM\Client($domain, $_POST['login']?:'sash.l@mail.ru', $_POST['api_key']?:'1c2dc2ed0b0337cba1e0400ae9df75da16c7ba36');
 }
 
 function p($data, $return = false)
